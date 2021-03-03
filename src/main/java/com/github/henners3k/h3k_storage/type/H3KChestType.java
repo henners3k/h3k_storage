@@ -5,8 +5,6 @@ import net.minecraft.util.ResourceLocation;
 
 public enum H3KChestType {
 
-    // TODO Textures
-
     IRON(6, 9, new ResourceLocation(Constants.MOD_ID, "textures/gui/container/chest/iron_chest.png"), 176, 222, 256, 256),
     GOLD(9, 9, new ResourceLocation(Constants.MOD_ID, "textures/gui/container/chest/gold_chest.png"), 176, 275, 512, 512),
     DIAMOND(6, 18, new ResourceLocation(Constants.MOD_ID, "textures/gui/container/chest/diamond_chest.png"), 338, 222, 512, 512),
