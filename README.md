@@ -1,4 +1,4 @@
-# H3K's Storage Mod
+# H3K's Storage Mod [![Build Status](https://travis-ci.com/henners3k/h3k_storage.svg?branch=master)](https://travis-ci.com/henners3k/h3k_storage)
 
 ### Adds additional storage options for early, mid and late game.
 
