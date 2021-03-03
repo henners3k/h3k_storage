@@ -1,6 +1,6 @@
 package com.github.henners3k.h3k_storage;
 
-import com.github.henners3k.h3k_storage.mod.Constants;
+import com.github.henners3k.h3k_storage.mod.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -14,6 +14,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class H3kStorageMod {
 
     public H3kStorageMod() {
+        H3KBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KContainers.CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KTiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
+
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
