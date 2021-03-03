@@ -1,0 +1,33 @@
+modLoader = "javafml"
+loaderVersion = "[36,)"
+license = "GNU v3"
+[[mods]]
+modId = "h3k_storage"
+version = "${file.jarVersion}"
+displayName = "H3K's Storage Mod"
+displayURL="https://github.com/henners3k/h3k_storage"
+logoFile = "logo.png"
+authors = "Henners3K" #optional
+description = '''
+Adds additional storage options for early, mid and late game.
+
+Including:
+- More Chests
+- More Barrels
+_ Upgraded Ender Chests
+- Backpacks
+- Fluid Storage Options
+- Modular Storage Options
+'''
+[[dependencies.h3k_storage]]
+modId = "forge"
+mandatory = true
+versionRange = "[36,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.h3k_storage]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.16.5,1.17)"
+ordering = "NONE"
+side = "BOTH"
