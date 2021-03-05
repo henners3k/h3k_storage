@@ -85,6 +85,7 @@ public enum H3KChestType {
         return new H3KChestContainer(this, windowId, inventory, playerInventory);
     }
 
+    @SuppressWarnings("unused")
     public H3KChestContainer createContainer(int windowId, PlayerInventory inv, PacketBuffer data) {
         return createContainer(windowId, new Inventory(getSize()), inv);
     }
