@@ -1,6 +1,9 @@
 package com.github.henners3k.h3k_storage;
 
+import com.github.henners3k.h3k_storage.gui.chest.H3KChestContainer;
 import com.github.henners3k.h3k_storage.mod.*;
+import com.github.henners3k.h3k_storage.type.H3KChestType;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -29,6 +32,7 @@ public class H3KStorageMod {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        ScreenManager.registerFactory(H3KStorageContainers.IRON_CHEST.get(), H3KChestType.IRON::createScreen);
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
