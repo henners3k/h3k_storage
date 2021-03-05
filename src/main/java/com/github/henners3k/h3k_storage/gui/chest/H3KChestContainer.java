@@ -8,6 +8,8 @@ import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
 
+import javax.annotation.Nonnull;
+
 public class H3KChestContainer extends Container {
 
     private static final int OFFSET_X = 8;
@@ -59,12 +61,13 @@ public class H3KChestContainer extends Container {
     }
 
     @Override
-    public boolean canInteractWith(PlayerEntity playerIn) {
+    public boolean canInteractWith(@Nonnull PlayerEntity playerIn) {
         return chestInventory.isUsableByPlayer(playerIn);
     }
 
+    @Nonnull
     @Override
-    public ItemStack transferStackInSlot(PlayerEntity playerIn, int index) {
+    public ItemStack transferStackInSlot(@Nonnull PlayerEntity playerIn, int index) {
         Slot sourceSlot = inventorySlots.get(index);
         if (sourceSlot == null || !sourceSlot.getHasStack()) return ItemStack.EMPTY;
         ItemStack sourceStack = sourceSlot.getStack();
