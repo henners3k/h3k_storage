@@ -9,15 +9,15 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public final class H3KStorageContainers {
-    public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, Constants.MOD_ID);
+    public static final DeferredRegister<ContainerType<?>> CONTAINERS = DeferredRegister.create(ForgeRegistries.CONTAINERS, H3KStorageStrings.MOD_ID);
 
     // Chests
     public static final RegistryObject<ContainerType<H3KChestContainer>> IRON_CHEST =
-            CONTAINERS.register(Constants.IRON_CHEST, () -> IForgeContainerType.create(H3KChestType.IRON::createContainer));
+            CONTAINERS.register(H3KStorageStrings.IRON_CHEST, () -> IForgeContainerType.create(H3KChestType.IRON::createContainer));
     public static final RegistryObject<ContainerType<H3KChestContainer>> GOLD_CHEST =
-            CONTAINERS.register(Constants.GOLD_CHEST, () -> IForgeContainerType.create(H3KChestType.GOLD::createContainer));
+            CONTAINERS.register(H3KStorageStrings.GOLD_CHEST, () -> IForgeContainerType.create(H3KChestType.GOLD::createContainer));
     public static final RegistryObject<ContainerType<H3KChestContainer>> DIAMOND_CHEST =
-            CONTAINERS.register(Constants.DIAMOND_CHEST, () -> IForgeContainerType.create(H3KChestType.DIAMOND::createContainer));
+            CONTAINERS.register(H3KStorageStrings.DIAMOND_CHEST, () -> IForgeContainerType.create(H3KChestType.DIAMOND::createContainer));
     public static final RegistryObject<ContainerType<H3KChestContainer>> NETHERITE_CHEST =
-            CONTAINERS.register(Constants.NETHERITE_CHEST, () -> IForgeContainerType.create(H3KChestType.NETHERITE::createContainer));
+            CONTAINERS.register(H3KStorageStrings.NETHERITE_CHEST, () -> IForgeContainerType.create(H3KChestType.NETHERITE::createContainer));
 }

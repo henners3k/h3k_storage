@@ -12,7 +12,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-@Mod(Constants.MOD_ID)
+@Mod(H3KStorageStrings.MOD_ID)
 public class H3KStorageMod {
 
     public H3KStorageMod() {
