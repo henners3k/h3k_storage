@@ -1,9 +1,9 @@
 package com.github.henners3k.h3k_storage.gui.chest;
 
-import com.github.henners3k.h3k_storage.inventory.H3KChestInventory;
 import com.github.henners3k.h3k_storage.type.H3KChestType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
 import net.minecraft.item.ItemStack;
@@ -17,9 +17,9 @@ public class H3KChestContainer extends Container {
     private static final int SLOT_SIZE = 18;
 
     private final H3KChestType type;
-    private final H3KChestInventory chestInventory;
+    private final IInventory chestInventory;
 
-    public H3KChestContainer(H3KChestType type, int windowId, H3KChestInventory chestInventory, PlayerInventory playerInventory) {
+    public H3KChestContainer(H3KChestType type, int windowId, IInventory chestInventory, PlayerInventory playerInventory) {
         super(type.getContainerType(), windowId);
         this.type = type;
         this.chestInventory = chestInventory;

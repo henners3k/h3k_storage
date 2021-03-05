@@ -1,6 +1,5 @@
 package com.github.henners3k.h3k_storage.block;
 
-import com.github.henners3k.h3k_storage.inventory.H3KChestInventory;
 import com.github.henners3k.h3k_storage.tile.H3KChestTile;
 import com.github.henners3k.h3k_storage.type.H3KChestType;
 import net.minecraft.block.*;
@@ -150,18 +149,18 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
         return true;
     }
 
-    private H3KChestInventory getInventory(BlockState blockState, World worldIn, BlockPos pos) {
+    private H3KChestTile getTile(World worldIn, BlockPos pos) {
         TileEntity tileEntity = worldIn.getTileEntity(pos);
 
         if (!(tileEntity instanceof H3KChestTile))
             return null;
 
-        return ((H3KChestTile) tileEntity).getInventory();
+        return ((H3KChestTile) tileEntity);
     }
 
     @Override
     public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
-        return Container.calcRedstoneFromInventory(this.getInventory(blockState, worldIn, pos));
+        return Container.calcRedstoneFromInventory(this.getTile(worldIn, pos));
     }
 
     @Override

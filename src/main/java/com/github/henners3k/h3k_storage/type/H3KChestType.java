@@ -2,15 +2,13 @@ package com.github.henners3k.h3k_storage.type;
 
 import com.github.henners3k.h3k_storage.gui.chest.H3KChestContainer;
 import com.github.henners3k.h3k_storage.gui.chest.H3KChestScreen;
-import com.github.henners3k.h3k_storage.inventory.H3KChestInventory;
 import com.github.henners3k.h3k_storage.mod.Constants;
 import com.github.henners3k.h3k_storage.mod.H3KStorageContainers;
 import com.github.henners3k.h3k_storage.mod.H3KStorageTiles;
 import com.github.henners3k.h3k_storage.tile.H3KChestTile;
-import net.minecraft.client.gui.IHasContainer;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntityType;
@@ -83,12 +81,12 @@ public enum H3KChestType {
         return tileType.get();
     }
 
-    public H3KChestContainer createContainer(int windowId, H3KChestInventory inventory, PlayerInventory playerInventory) {
+    public H3KChestContainer createContainer(int windowId, IInventory inventory, PlayerInventory playerInventory) {
         return new H3KChestContainer(this, windowId, inventory, playerInventory);
     }
 
     public H3KChestContainer createContainer(int windowId, PlayerInventory inv, PacketBuffer data) {
-        return createContainer(windowId, new H3KChestInventory(this), inv);
+        return createContainer(windowId, new Inventory(getSize()), inv);
     }
 
     public ContainerType<H3KChestContainer> getContainerType() {
