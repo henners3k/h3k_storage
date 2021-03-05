@@ -4,14 +4,16 @@
 
 Including:
 
-- More Chests
-- More Barrels
-- Upgraded Ender Chests
-- Backpacks
-- Fluid Storage Options
-- Modular Storage Options
+- Iron, Gold, Diamond and Netherite Chests (Stone Coming Soon)
+- More Barrels (Coming Soon)
+- Upgraded Coming Chests (Coming Soon)
+- Backpacks (Coming Soon)
+- Fluid Storage Options (Coming Soon)
+- Modular Storage Options(Coming Soon)
 
-## Roadmap
+[View the Wiki Here](https://h3k-storage.fandom.com/)
+
+## Development Roadmap
 
 ### Key
 
@@ -24,12 +26,12 @@ Including:
 
 - 0.0.1:
 
-  More Chests (Iron, Gold, Diamond and Netherite) 🟡
+  More Chests (Iron, Gold, Diamond and Netherite) 🟢
 
 
 - 0.0.2 :
 
-  More Barrels (Iron, Gold, Diamond and Netherite) ⚪
+  More Barrels (Iron, Gold, Diamond and Netherite) 🟡
 
 
 - 0.0.3:
