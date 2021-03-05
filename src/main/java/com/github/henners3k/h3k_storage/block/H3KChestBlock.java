@@ -55,7 +55,7 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
 
     @Nullable
     @Override
-    public TileEntity createNewTileEntity(IBlockReader worldIn) {
+    public TileEntity createNewTileEntity(@Nonnull IBlockReader worldIn) {
         return new H3KChestTile(type);
     }
 
@@ -67,19 +67,20 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
 
     @Override
     @Nonnull
-    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(BlockState state, @Nonnull IBlockReader worldIn, @Nonnull BlockPos pos, @Nonnull ISelectionContext context) {
         return VoxelShapes.or(BODY_SHAPE, BODY_SHAPE, LATCH_SHAPES.get(state.get(FACING)));
 
     }
 
     @Override
     @Nonnull
-    public BlockRenderType getRenderType(BlockState state) {
+    public BlockRenderType getRenderType(@Nonnull BlockState state) {
         return BlockRenderType.MODEL;
     }
 
+    @Nonnull
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(@Nonnull BlockState state, World worldIn, @Nonnull BlockPos pos, @Nonnull PlayerEntity player, @Nonnull Hand handIn, @Nonnull BlockRayTraceResult hit) {
         if (worldIn.isRemote)
             return ActionResultType.SUCCESS;
 
@@ -101,7 +102,11 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
         Direction direction = context.getPlacementHorizontalFacing().getOpposite();
         FluidState fluidstate = context.getWorld().getFluidState(context.getPos());
 
-        return super.getStateForPlacement(context).with(FACING, direction).with(WATERLOGGED, fluidstate.getFluid() == Fluids.WATER);
+        BlockState blockState = super.getStateForPlacement(context);
+        if (blockState != null)
+            blockState = blockState.with(FACING, direction).with(WATERLOGGED, fluidstate.getFluid() == Fluids.WATER);
+
+        return blockState;
     }
 
     @Override
@@ -122,7 +127,7 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
 
     @Override
     @Nonnull
-    public BlockState updatePostPlacement(BlockState stateIn, Direction facing, BlockState facingState, IWorld worldIn, BlockPos currentPos, BlockPos facingPos) {
+    public BlockState updatePostPlacement(BlockState stateIn, @Nonnull Direction facing, @Nonnull BlockState facingState, @Nonnull IWorld worldIn, @Nonnull BlockPos currentPos, @Nonnull BlockPos facingPos) {
         if (stateIn.get(WATERLOGGED))
             worldIn.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(worldIn));
 
@@ -136,7 +141,7 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void onBlockPlacedBy(@Nonnull World worldIn, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         if (!stack.hasDisplayName()) return;
 
         TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -145,7 +150,7 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public boolean hasComparatorInputOverride(BlockState state) {
+    public boolean hasComparatorInputOverride(@Nonnull BlockState state) {
         return true;
     }
 
@@ -159,12 +164,12 @@ public class H3KChestBlock extends ContainerBlock implements IWaterLoggable {
     }
 
     @Override
-    public int getComparatorInputOverride(BlockState blockState, World worldIn, BlockPos pos) {
+    public int getComparatorInputOverride(@Nonnull BlockState blockState, @Nonnull World worldIn, @Nonnull BlockPos pos) {
         return Container.calcRedstoneFromInventory(this.getTile(worldIn, pos));
     }
 
     @Override
-    public void onReplaced(BlockState state, World worldIn, BlockPos blockPos, BlockState newState, boolean isMoving) {
+    public void onReplaced(BlockState state, @Nonnull World worldIn, @Nonnull BlockPos blockPos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {
             TileEntity tile = worldIn.getTileEntity(blockPos);
             if (tile instanceof H3KChestTile) {
