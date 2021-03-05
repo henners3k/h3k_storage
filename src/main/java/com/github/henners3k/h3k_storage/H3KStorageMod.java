@@ -11,13 +11,13 @@ import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(Constants.MOD_ID)
-public class H3kStorageMod {
+public class H3KStorageMod {
 
-    public H3kStorageMod() {
-        H3KBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        H3KContainers.CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        H3KItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        H3KTiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
+    public H3KStorageMod() {
+        H3KStorageBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KStorageContainers.CONTAINERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KStorageItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        H3KStorageTiles.TILES.register(FMLJavaModLoadingContext.get().getModEventBus());
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
