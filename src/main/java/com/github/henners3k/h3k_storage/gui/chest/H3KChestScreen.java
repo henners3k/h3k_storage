@@ -8,6 +8,8 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.text.ITextComponent;
 import org.lwjgl.opengl.GL11;
 
+import javax.annotation.Nonnull;
+
 public class H3KChestScreen extends ContainerScreen<H3KChestContainer> implements IHasContainer<H3KChestContainer> {
 
     private final H3KChestType type;
@@ -23,15 +25,17 @@ public class H3KChestScreen extends ContainerScreen<H3KChestContainer> implement
     }
 
     @Override
-    public void render(MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
+    public void render(@Nonnull MatrixStack matrixStack, int mouseX, int mouseY, float partialTicks) {
         this.renderBackground(matrixStack);
         super.render(matrixStack, mouseX, mouseY, partialTicks);
         this.renderHoveredTooltip(matrixStack, mouseX, mouseY);
     }
 
     @Override
-    protected void drawGuiContainerBackgroundLayer(MatrixStack matrixStack, float partialTicks, int x, int y) {
+    protected void drawGuiContainerBackgroundLayer(@Nonnull MatrixStack matrixStack, float partialTicks, int x, int y) {
         GL11.glColor4f(1F, 1F, 1F, 1F);
+
+        assert this.minecraft != null;
         this.minecraft.getTextureManager().bindTexture(type.getTexture());
 
         int x1 = (this.width - this.xSize) / 2;
