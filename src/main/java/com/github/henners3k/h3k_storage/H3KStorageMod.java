@@ -1,6 +1,5 @@
 package com.github.henners3k.h3k_storage;
 
-import com.github.henners3k.h3k_storage.gui.chest.H3KChestContainer;
 import com.github.henners3k.h3k_storage.mod.*;
 import com.github.henners3k.h3k_storage.type.H3KChestType;
 import net.minecraft.client.gui.ScreenManager;
@@ -32,7 +31,12 @@ public class H3KStorageMod {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        // Chests
         ScreenManager.registerFactory(H3KStorageContainers.IRON_CHEST.get(), H3KChestType.IRON::createScreen);
+        ScreenManager.registerFactory(H3KStorageContainers.GOLD_CHEST.get(), H3KChestType.GOLD::createScreen);
+        ScreenManager.registerFactory(H3KStorageContainers.DIAMOND_CHEST.get(), H3KChestType.DIAMOND::createScreen);
+        ScreenManager.registerFactory(H3KStorageContainers.NETHERITE_CHEST.get(), H3KChestType.NETHERITE::createScreen);
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {

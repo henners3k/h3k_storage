@@ -1,0 +1,9 @@
+{
+  "parent": "h3k_storage:block/h3k_chest",
+  "textures": {
+    "front": "h3k_storage:block/netherite_chest_front",
+    "side": "h3k_storage:block/netherite_chest_side",
+    "top_bottom": "h3k_storage:block/netherite_chest_top_bottom",
+    "particle": "minecraft:block/netherite_block"
+  }
+}

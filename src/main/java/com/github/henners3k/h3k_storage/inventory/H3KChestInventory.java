@@ -6,6 +6,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraftforge.items.ItemStackHandler;
+import org.apache.logging.log4j.LogManager;
 
 public class H3KChestInventory implements IInventory {
     private final H3KChestType type;
@@ -54,7 +55,6 @@ public class H3KChestInventory implements IInventory {
 
     @Override
     public void markDirty() {
-
     }
 
     @Override

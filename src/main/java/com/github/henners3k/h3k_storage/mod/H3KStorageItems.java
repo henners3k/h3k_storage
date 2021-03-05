@@ -13,5 +13,10 @@ public final class H3KStorageItems {
     // Chests
     public static final RegistryObject<Item> IRON_CHEST =
             ITEMS.register(Constants.IRON_CHEST, () -> new BlockItem(H3KStorageBlocks.IRON_CHEST.get(), new Item.Properties()));
-
+    public static final RegistryObject<Item> GOLD_CHEST =
+            ITEMS.register(Constants.GOLD_CHEST, () -> new BlockItem(H3KStorageBlocks.GOLD_CHEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_CHEST =
+            ITEMS.register(Constants.DIAMOND_CHEST, () -> new BlockItem(H3KStorageBlocks.DIAMOND_CHEST.get(), new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_CHEST =
+            ITEMS.register(Constants.NETHERITE_CHEST, () -> new BlockItem(H3KStorageBlocks.NETHERITE_CHEST.get(), new Item.Properties()));
 }

@@ -9,5 +9,9 @@ public final class Constants {
 
     // Chests
     public static final String IRON_CHEST = "iron_chest";
+    public static final String GOLD_CHEST = "gold_chest";
+    public static final String DIAMOND_CHEST = "diamond_chest";
+    public static final String NETHERITE_CHEST = "netherite_chest";
+
 
 }
