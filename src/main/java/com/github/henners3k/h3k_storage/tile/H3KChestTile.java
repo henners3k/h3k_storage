@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class H3KChestTile extends TileEntity implements INamedContainerProvider, IInventory {
@@ -33,18 +34,20 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
     }
 
     @Override
-    public void read(BlockState state, CompoundNBT nbt) {
+    public void read(@Nonnull BlockState state, @Nonnull CompoundNBT nbt) {
         super.read(state, nbt);
         ItemStackHelper.loadAllItems(nbt, contents);
     }
 
+    @Nonnull
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
+    public CompoundNBT write(@Nonnull CompoundNBT compound) {
         super.write(compound);
         ItemStackHelper.saveAllItems(compound, contents);
         return compound;
     }
 
+    @Nonnull
     @Override
     public CompoundNBT getUpdateTag() {
         CompoundNBT nbt = new CompoundNBT();
@@ -65,6 +68,7 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
 
     @Override
     public void onDataPacket(NetworkManager net, SUpdateTileEntityPacket pkt) {
+        assert world != null;
         BlockState state = world.getBlockState(getPos());
         handleUpdateTag(state, pkt.getNbtCompound());
     }
@@ -73,6 +77,7 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
         InventoryHelper.dropInventoryItems(world, pos, this);
     }
 
+    @Nonnull
     @Override
     public ITextComponent getDisplayName() {
         return customName != null ? customName : getBlockState().getBlock().getTranslatedName();
@@ -84,7 +89,7 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
 
     @Nullable
     @Override
-    public Container createMenu(int windowId, PlayerInventory playerInventory, PlayerEntity playerEntity) {
+    public Container createMenu(int windowId, @Nonnull PlayerInventory playerInventory, @Nonnull PlayerEntity playerEntity) {
         return type.createContainer(windowId, this, playerInventory);
     }
 
@@ -103,11 +108,13 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
         return true;
     }
 
+    @Nonnull
     @Override
     public ItemStack getStackInSlot(int index) {
         return contents.get(index);
     }
 
+    @Nonnull
     @Override
     public ItemStack decrStackSize(int index, int count) {
         ItemStack itemStack = ItemStackHelper.getAndSplit(contents, index, count);
@@ -116,13 +123,14 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
         return itemStack;
     }
 
+    @Nonnull
     @Override
     public ItemStack removeStackFromSlot(int index) {
         return ItemStackHelper.getAndRemove(contents, index);
     }
 
     @Override
-    public void setInventorySlotContents(int index, ItemStack stack) {
+    public void setInventorySlotContents(int index, @Nonnull ItemStack stack) {
         contents.set(index, stack);
         if (stack.getCount() > this.getInventoryStackLimit()) {
             stack.setCount(this.getInventoryStackLimit());
@@ -131,7 +139,8 @@ public class H3KChestTile extends TileEntity implements INamedContainerProvider,
     }
 
     @Override
-    public boolean isUsableByPlayer(PlayerEntity player) {
+    public boolean isUsableByPlayer(@Nonnull PlayerEntity player) {
+        assert this.world != null;
         if (this.world.getTileEntity(this.pos) != this) {
             return false;
         } else {
